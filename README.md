@@ -1,6 +1,6 @@
 <br>
 <h1>Ext.ux.grid.GridFilter</h1>
-<hr>
+
 <br>
   Grid plugin that adds a filtering row below grid header.
   Allows remote filtering, supports pagination grids.
