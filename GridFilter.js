@@ -27,9 +27,9 @@
  *   
  *   
  * 
- * Example:
- * 
- * var grid = new Ext.grid.GridPanel({
+  Example:
+ 
+  var grid = new Ext.grid.GridPanel({
   columns: [
      {
         text: "User ID",
@@ -57,10 +57,10 @@ Ext.define('Ext.ux.grid.GridFilter', {
     alias: 'plugin.gridFilter',
     init: function (grid) {
         var me = this;
-        grid.relayEvents(grid.getStore(), ['load'], 'store'); 
-        grid.relayEvents(grid.getStore(), ['beforeload'], 'store'); 
-        grid.addListener('storebeforeload', me.onBeforeLoad);
-        grid.addListener('storeload', me.storeload);
+        grid.relayEvents(grid.getStore(), ['load','beforeload','sortchange']);
+        grid.addListener('beforeload', me.onBeforeLoad);
+        grid.addListener('load', me.storeload);
+        grid.addListener('sortchange', me.storeload);
     }, 
     storeload: function () {
         var me = this;
@@ -125,6 +125,7 @@ Ext.define('Ext.ux.grid.GridFilter', {
                         }
                         
                         me.store.load({params: clonedSearchParams});
+                        me.store.currentPage = 1;
                     }
                 };
                 td.appendChild(input);
@@ -145,5 +146,5 @@ Ext.define('Ext.ux.grid.GridFilter', {
        if(me.filters){
            store.getProxy().extraParams = me.filters;
        } 
-    }
+    } 
 });
