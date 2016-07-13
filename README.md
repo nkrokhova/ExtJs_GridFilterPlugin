@@ -22,8 +22,12 @@ When the user adds criterias to the filter and hits enter,
   The values are collected just for the filters that are not empty,
   and are sent to the server in the format:
   dataIndex:VALUE    // Example  firstName: 'Roberto'
-
+<br>
+<br>
+  Copyright 2016 Roberto Rodriguez
   <br>
+  Email: robertoSoftwareEngineer@gmail.com
+<br>
   Example:
 <pre><code>
   var grid = new Ext.grid.GridPanel({

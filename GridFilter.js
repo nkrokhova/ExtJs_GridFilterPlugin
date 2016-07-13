@@ -57,29 +57,26 @@ Ext.define('Ext.ux.grid.GridFilter', {
     alias: 'plugin.gridFilter',
     init: function (grid) {
         var me = this;
-        grid.relayEvents(grid.getStore(), ['viewready','load', 'beforeload', 'sortchange']);
+        grid.relayEvents(grid.getStore(), ['viewready', 'load', 'beforeload', 'sortchange']);
         grid.addListener('beforeload', me.onBeforeLoad);
         grid.addListener('viewready', me.storeload);
         grid.addListener('load', me.storeload);
         grid.addListener('sortchange', me.storeload);
     },
-    storeload: function () { 
+    storeload: function () {
+        console.log('storeload');
         var me = this;
         var body = me.body.dom;
- 
+
         var table = body.getElementsByClassName('x-grid-table')[0];
-        
-        if(!table){  
-             return;
+
+        if (!table) {
+            return;
         }
-        
+
         var tbody = table.getElementsByTagName('tbody')[0];
 
         var tr1 = tbody.childNodes[0];
-        
-        if(tr1.classList.contains('ux-grid-filter')){
-            return;
-        } 
 
         if (tr1) {
             me['tr1'] = tr1;
@@ -89,6 +86,10 @@ Ext.define('Ext.ux.grid.GridFilter', {
             } else {
                 return;
             }
+        }
+
+        if (tr1.classList.contains('ux-grid-filter')) {
+            return;
         }
 
         var newTr = document.createElement('tr');
@@ -152,8 +153,14 @@ Ext.define('Ext.ux.grid.GridFilter', {
     },
     onBeforeLoad: function (store, operation, eOpts) {
         var me = this;
+
         if (me.filters) {
             store.getProxy().extraParams = me.filters;
+        }
+
+        if (!me['pageSize']) {
+            me['pageSize'] = --store.pageSize;
+            store.getProxy().extraParams['limit'] = me['pageSize'];
         }
     }
 });
