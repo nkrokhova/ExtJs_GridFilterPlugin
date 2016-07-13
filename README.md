@@ -23,11 +23,7 @@ When the user adds criterias to the filter and hits enter,
   and are sent to the server in the format:
   dataIndex:VALUE    // Example  firstName: 'Roberto'
 <br>
-<br>
-  Copyright 2016 Roberto Rodriguez
-  <br>
-  Email: robertoSoftwareEngineer@gmail.com
-<br>
+
   Example:
 <pre><code>
   var grid = new Ext.grid.GridPanel({
@@ -54,6 +50,11 @@ When the user adds criterias to the filter and hits enter,
 </code></pre>
 
 
+<br>
+<br>
+  Copyright 2016 Roberto Rodriguez
+  <br>
+  Email: robertoSoftwareEngineer@gmail.com
 <br>
 
 <p2>Change Logs</p2>
